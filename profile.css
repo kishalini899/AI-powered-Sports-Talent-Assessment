@@ -1,0 +1,138 @@
+body{
+background:#f8fafc;
+}
+
+.profile-container{
+width:90%;
+max-width:1400px;
+margin:auto;
+padding:50px 0;
+}
+
+.profile-card{
+background:white;
+padding:50px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+margin-bottom:40px;
+}
+
+.profile-image{
+width:160px;
+height:160px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #2563eb;
+margin-bottom:20px;
+}
+
+.profile-card h1{
+font-size:40px;
+margin-bottom:10px;
+color:#0f172a;
+}
+
+.profile-card p{
+color:#64748b;
+margin-bottom:20px;
+}
+
+.edit-btn{
+padding:14px 30px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+margin-bottom:40px;
+}
+
+.stat-card{
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.stat-card:hover{
+transform:translateY(-8px);
+}
+
+.stat-card h2{
+font-size:36px;
+color:#2563eb;
+}
+
+.stat-card p{
+margin-top:10px;
+color:#64748b;
+}
+
+.achievement-section{
+margin-top:40px;
+}
+
+.section-title{
+font-size:34px;
+text-align:center;
+margin-bottom:30px;
+color:#0f172a;
+}
+
+.achievement-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.achievement-card{
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.achievement-card h3{
+font-size:40px;
+margin-bottom:15px;
+}
+
+.achievement-card p{
+color:#64748b;
+}
+
+.performance-card{
+margin-top:40px;
+background:white;
+padding:50px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.performance-card h2{
+font-size:40px;
+margin-bottom:15px;
+}
+
+.performance-score{
+font-size:80px;
+font-weight:700;
+color:#22c55e;
+}
+
+.performance-card p{
+margin-top:15px;
+color:#64748b;
+font-size:18px;
+}

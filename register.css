@@ -1,0 +1,43 @@
+body{
+background:#f1f5f9;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.register-container{
+width:550px;
+background:white;
+padding:50px;
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.register-container h1{
+text-align:center;
+margin-bottom:30px;
+color:#2563eb;
+}
+
+.register-container input{
+width:100%;
+padding:15px;
+margin-bottom:18px;
+border:1px solid #cbd5e1;
+border-radius:12px;
+}
+
+.register-btn{
+width:100%;
+padding:15px;
+background:#22c55e;
+color:white;
+border:none;
+border-radius:12px;
+cursor:pointer;
+}
+
+.register-btn:hover{
+background:#16a34a;
+}
