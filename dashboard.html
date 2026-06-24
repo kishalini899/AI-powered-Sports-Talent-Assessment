@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard | AI Sports Talent Assessment</title>
+
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/dashboard.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* YOUR CSS KEPT EXACTLY SAME */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f8fafc;
+}
+
+.navbar{
+height:80px;
+background:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 8%;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:#2563eb;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#0f172a;
+font-weight:500;
+}
+
+.profile-btn{
+padding:12px 25px;
+border-radius:30px;
+background:#22c55e;
+color:white;
+text-decoration:none;
+display:inline-block;
+cursor:pointer;
+}
+
+.hero{
+padding:70px 8%;
+text-align:center;
+}
+
+.hero h1{
+font-size:50px;
+color:#0f172a;
+}
+
+.hero p{
+margin-top:15px;
+font-size:20px;
+color:#475569;
+}
+
+.stats{
+width:90%;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+margin-top:30px;
+}
+
+.stat-card{
+background:white;
+padding:40px;
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+text-align:center;
+transition:.4s;
+}
+
+.stat-card:hover{
+transform:translateY(-10px);
+}
+
+.stat-card h2{
+font-size:50px;
+color:#2563eb;
+}
+
+.stat-card p{
+margin-top:10px;
+color:#64748b;
+}
+
+.section-title{
+text-align:center;
+font-size:40px;
+margin-top:90px;
+margin-bottom:50px;
+color:#0f172a;
+}
+
+.assessments{
+width:90%;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+padding-bottom:100px;
+}
+
+.card{
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:25px;
+text-align:center;
+}
+
+.card-content h3{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.card-content p{
+color:#64748b;
+margin-bottom:15px;
+}
+
+.score{
+font-size:30px;
+font-weight:700;
+color:#22c55e;
+}
+
+.action-btn{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#2563eb;
+color:white;
+cursor:pointer;
+margin-top:15px;
+}
+
+.banner{
+width:90%;
+height:350px;
+margin:60px auto;
+border-radius:30px;
+background:
+linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+url("https://images.unsplash.com/photo-1540747913346-19e32dc3e97e");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.banner h1{
+color:white;
+font-size:55px;
+}
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">🏏 AI Sports</div>
+
+<ul class="nav-links">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/players">Players</a></li>
+    <li><a href="/assessment">Assessment</a></li>
+    <li><a href="/result">Results</a></li>
+    <li><a href="/history">History</a></li>
+    <li><a href="/profile">Profile</a></li>
+    <li><a href="/admin">Coach Dashboard</a></li>
+</ul>
+
+<!-- FIXED: removed broken duplicate nav closing -->
+
+<div style="display:flex; gap:10px;">
+
+    <a href="/profile" class="profile-btn">
+        Profile
+    </a>
+
+    <a href="/logout" class="profile-btn">
+        Logout
+    </a>
+
+</div>
+</nav>
+
+<!-- ✅ FIX 1: Dynamic name (no more "Kisha") -->
+<section class="hero">
+
+<h1>Welcome, {{ player_name or "Player" }} 👋</h1>
+
+<p>
+Track player performance and discover future champions.
+</p>
+
+</section>
+
+<!-- ✅ FIX 2: Dynamic stats -->
+<section class="stats">
+
+<div class="stat-card">
+<h2>{{ total_assessments or 0 }}</h2>
+<p>Total Assessments</p>
+</div>
+
+<div class="stat-card">
+<h2>{{ avg_score or 0 }}%</h2>
+<p>Average Score</p>
+</div>
+
+<div class="stat-card">
+<h2>{{ total_players or 0 }}</h2>
+<p>Players Assessed</p>
+</div>
+
+<div class="stat-card">
+<h2>{{ ranking or "Top 20%" }}</h2>
+<p>Ranking</p>
+</div>
+
+</section>
+
+<div class="banner">
+
+<h1>AI Powered Cricket Analytics</h1>
+
+</div>
+
+<h2 class="section-title">
+Recent Assessments
+</h2>
+
+<!-- (KEEP STATIC OR YOU CAN MAKE DYNAMIC LATER) -->
+<section class="assessments">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da">
+
+<div class="card-content">
+
+<h3>Batting Analysis</h3>
+
+<p>Stance, Balance & Footwork</p>
+
+<div class="score">{{ batting_score or 67 }}%</div>
+
+<a href="/result" class="action-btn">View Report</a>
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1624880357913-a8539238245b">
+
+<div class="card-content">
+
+<h3>Bowling Analysis</h3>
+
+<p>Action & Release Assessment</p>
+
+<div class="score">{{ bowling_score or 81 }}%</div>
+
+<a href="/result" class="action-btn">View Report</a>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1517649763962-0c623066013b">
+
+<div class="card-content">
+
+<h3>Talent Report</h3>
+
+<p>AI Generated Insights</p>
+
+<div class="score">{{ overall_score or 92 }}%</div>
+
+<a href="/result" class="action-btn">View Report</a>
+</div>
+
+</div>
+
+</section>
+
+<script src="static/js/main.js"></script>
+<script src="static/js/dashboard.js"></script>
+
+</body>
+</html>

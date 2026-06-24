@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Coach Dashboard</title>
+
+<style>
+
+body{
+font-family:Poppins,sans-serif;
+background:#f8fafc;
+padding:40px;
+}
+
+h1{
+text-align:center;
+color:#2563eb;
+margin-bottom:40px;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+margin-bottom:40px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.card h2{
+font-size:50px;
+color:#2563eb;
+}
+
+table{
+width:100%;
+background:white;
+border-collapse:collapse;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+th{
+background:#2563eb;
+color:white;
+padding:15px;
+}
+
+td{
+padding:15px;
+text-align:center;
+border-bottom:1px solid #eee;
+}
+
+.top-player{
+background:#dcfce7;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🏏 Coach Dashboard</h1>
+
+<div class="stats">
+
+<div class="card">
+<h2>{{ total_players }}</h2>
+<p>Total Players</p>
+</div>
+
+<div class="card">
+<h2>{{ total_assessments }}</h2>
+<p>Total Assessments</p>
+</div>
+
+</div>
+<div class="stats">
+
+<div class="card">
+
+<h2>🥇 Top Performer</h2>
+
+<p>
+{{ top_player['fullname'] if top_player else 'N/A' }}
+</p>
+
+<p>
+{{ top_player['avg_score']|round(0) if top_player and top_player['avg_score'] else 0 }}%
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📉 Lowest Performer</h2>
+
+<p>
+{{ lowest_player['fullname'] if lowest_player else 'N/A' }}
+</p>
+
+<p>
+{{ lowest_player['avg_score']|round(0) if lowest_player and lowest_player['avg_score'] else 0 }}%
+</p>
+
+</div>
+
+</div>
+
+<h2>Player Rankings</h2>
+<input
+type="text"
+id="playerSearch"
+placeholder="Search player..."
+style="
+width:100%;
+padding:15px;
+margin-bottom:20px;
+border-radius:10px;
+border:1px solid #ccc;
+">
+
+<table>
+
+<tr>
+<th>Rank</th>
+<th>Name</th>
+<th>Gender</th>
+<th>Sport</th>
+<th>Average Score</th>
+<th>Progress</th>
+</tr>
+
+{% for player in players %}
+
+<tr {% if loop.first %}class="top-player"{% endif %}>
+
+<td>{{ loop.index }}</td>
+
+<td>{{ player['fullname'] }}</td>
+
+<td>{{ player['gender'] }}</td>
+
+<td>{{ player['sport'] }}</td>
+
+<td>
+{% if player['avg_score'] %}
+{{ player['avg_score']|round(0) }}%
+{% else %}
+No Assessment
+{% endif %}
+</td>
+<td>
+<a href="/player_progress/{{ player['id'] }}"
+style="
+background:#2563eb;
+color:white;
+padding:8px 15px;
+border-radius:10px;
+text-decoration:none;
+">
+View Graph
+</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+<script>
+
+const searchBox =
+document.getElementById("playerSearch");
+
+searchBox.addEventListener("keyup", function(){
+
+let filter =
+this.value.toLowerCase();
+
+let rows =
+document.querySelectorAll("table tr");
+
+rows.forEach((row,index)=>{
+
+if(index===0) return;
+
+let text =
+row.innerText.toLowerCase();
+
+row.style.display =
+text.includes(filter)
+? ""
+: "none";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

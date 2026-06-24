@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/login.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:
+linear-gradient(rgba(255,255,255,.65),rgba(255,255,255,.65)),
+url("https://images.unsplash.com/photo-1540747913346-19e32dc3e97e");
+background-size:cover;
+background-position:center;
+}
+
+.login-card{
+width:450px;
+background:white;
+padding:50px;
+border-radius:30px;
+box-shadow:0 15px 35px rgba(0,0,0,.1);
+text-align:center;
+}
+
+.login-card h1{
+font-size:40px;
+color:#2563eb;
+margin-bottom:15px;
+}
+
+.login-card p{
+color:#64748b;
+margin-bottom:30px;
+}
+
+.input-box{
+width:100%;
+padding:16px;
+margin-bottom:20px;
+border:2px solid #e2e8f0;
+border-radius:15px;
+font-size:16px;
+}
+
+.input-box:focus{
+outline:none;
+border-color:#2563eb;
+}
+
+.login-btn{
+width:100%;
+padding:18px;
+border:none;
+border-radius:50px;
+background:#22c55e;
+color:white;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+transition:.4s;
+}
+
+.login-btn:hover{
+transform:translateY(-5px);
+}
+
+.register-link{
+margin-top:25px;
+}
+
+.register-link a{
+text-decoration:none;
+color:#2563eb;
+font-weight:600;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="login-card">
+
+<h1>🏏 Login</h1>
+
+<p>Access your AI Sports Dashboard</p>
+
+<!-- ✅ FIXED FORM -->
+<form action="/login" method="POST">
+
+    <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        class="input-box"
+        required>
+
+    <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        class="input-box"
+        required>
+
+    <button type="submit" class="login-btn">
+        Login
+    </button>
+
+</form>
+
+<!-- ✅ FIXED LINK (IMPORTANT FOR FLASK) -->
+<div class="register-link">
+Don't have an account?
+<a href="/register">Register</a>
+</div>
+
+</div>
+
+<script src="static/js/main.js"></script>
+<script src="static/js/auth.js"></script>
+
+</body>
+</html>

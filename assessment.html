@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Assessment | AI Sports Talent Assessment</title>
+
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/assessment.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* YOUR FULL CSS KEPT AS IT IS */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f8fafc;
+}
+
+.navbar{
+height:80px;
+background:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 8%;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+color:#2563eb;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#0f172a;
+font-weight:500;
+}
+
+.hero{
+height:45vh;
+background:
+linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.55)),
+url("https://images.unsplash.com/photo-1540747913346-19e32dc3e97e");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero-content h1{
+font-size:60px;
+color:#0f172a;
+}
+
+.hero-content p{
+font-size:22px;
+color:#334155;
+margin-top:15px;
+}
+
+.container{
+width:90%;
+max-width:1400px;
+margin:auto;
+padding:70px 0;
+}
+
+.upload-box{
+background:white;
+border-radius:30px;
+padding:60px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+text-align:center;
+border:3px dashed #2563eb;
+}
+
+.upload-box h2{
+font-size:36px;
+margin-bottom:20px;
+}
+
+.upload-box p{
+color:#64748b;
+margin-bottom:25px;
+}
+
+.upload-box input{
+font-size:18px;
+}
+
+.section-title{
+text-align:center;
+font-size:42px;
+margin-top:80px;
+margin-bottom:50px;
+color:#0f172a;
+}
+
+.options{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:35px;
+}
+
+.card{
+background:white;
+border-radius:30px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+transition:.4s;
+cursor:pointer;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:280px;
+object-fit:cover;
+}
+
+.card-content{
+padding:30px;
+text-align:center;
+}
+
+.card-content h3{
+font-size:30px;
+margin-bottom:10px;
+}
+
+.card-content p{
+color:#64748b;
+}
+
+.analyze-section{
+text-align:center;
+padding:80px 0;
+}
+
+.analyze-btn{
+padding:20px 60px;
+border:none;
+border-radius:50px;
+background:#22c55e;
+color:white;
+font-size:22px;
+font-weight:600;
+cursor:pointer;
+transition:.4s;
+}
+
+.analyze-btn:hover{
+transform:translateY(-5px);
+background:#16a34a;
+}
+
+.info-cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:30px;
+margin-top:50px;
+}
+
+.info{
+background:white;
+padding:35px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.info h3{
+font-size:26px;
+margin-bottom:15px;
+}
+
+.info p{
+color:#64748b;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="logo">🏏 AI Sports</div>
+
+<ul class="nav-links">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/assessment">Assessment</a></li>
+    <li><a href="/result">Results</a></li>
+    <li><a href="/history">History</a></li>
+    <li><a href="/players">Players</a></li>
+    <li><a href="/profile">Profile</a></li>
+</ul>
+</nav>
+
+<!-- ✅ ONLY BACKEND FIX ADDED: player_id -->
+<form action="/assessment" method="POST" enctype="multipart/form-data">
+
+<!-- 🔥 FIX: required for Player-ID system -->
+<input type="hidden" name="player_id" value="{{ player_id }}">
+
+<section class="hero">
+<div class="hero-content">
+<h1>Video Assessment</h1>
+<p>Upload Cricket Videos For AI Performance Analysis</p>
+</div>
+</section>
+
+<div class="container">
+
+<div class="upload-box">
+
+<h2>📹 Upload Cricket Video</h2>
+<p>Drag & Drop your video or select a file below</p>
+
+<input type="file" name="video" required>
+
+</div>
+
+<h2 class="section-title">
+Choose Assessment Type
+</h2>
+
+<div class="options">
+
+<label class="card">
+<input type="radio" name="type" value="batting" required>
+<img src="https://images.unsplash.com/photo-1531415074968-036ba1b575da">
+<div class="card-content">
+<h3>🏏 Batting Analysis</h3>
+<p>Evaluate stance, balance and footwork.</p>
+</div>
+</label>
+
+<label class="card">
+<input type="radio" name="type" value="bowling">
+<img src="https://images.unsplash.com/photo-1624880357913-a8539238245b">
+<div class="card-content">
+<h3>🎯 Bowling Analysis</h3>
+<p>Analyze bowling action and technique.</p>
+</div>
+</label>
+
+</div>
+
+<div class="analyze-section">
+
+<button type="submit" class="analyze-btn">
+Analyze Performance
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+<script src="static/js/main.js"></script>
+<script src="static/js/upload.js"></script>
+
+</body>
+</html>

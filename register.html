@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/register.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:
+linear-gradient(rgba(255,255,255,.65),rgba(255,255,255,.65)),
+url("https://images.unsplash.com/photo-1540747913346-19e32dc3e97e");
+background-size:cover;
+background-position:center;
+padding:40px;
+}
+
+.register-card{
+width:550px;
+background:white;
+padding:50px;
+border-radius:30px;
+box-shadow:0 15px 35px rgba(0,0,0,.1);
+text-align:center;
+}
+
+.register-card h1{
+font-size:42px;
+color:#2563eb;
+margin-bottom:15px;
+}
+
+.input-box{
+width:100%;
+padding:16px;
+margin-bottom:18px;
+border:2px solid #e2e8f0;
+border-radius:15px;
+font-size:16px;
+}
+
+.input-box:focus{
+outline:none;
+border-color:#2563eb;
+}
+
+.register-btn{
+width:100%;
+padding:18px;
+border:none;
+border-radius:50px;
+background:#22c55e;
+color:white;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+}
+
+.register-btn:hover{
+background:#16a34a;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="register-card">
+
+<h1>🏏 Create Account</h1>
+
+<p>Join AI Sports Talent Platform</p>
+
+<!-- ✅ FIXED FORM -->
+<form action="/register" method="POST">
+
+    <input type="text" name="fullname" placeholder="Full Name" class="input-box" required>
+
+    <input type="text" name="age" placeholder="Age" class="input-box" required>
+
+    <input type="text" name="gender" placeholder="Gender" class="input-box" required>
+
+    <input type="text" name="sport" placeholder="Sport" class="input-box" required>
+
+    <input type="email" name="email" placeholder="Email" class="input-box" required>
+
+    <input type="password" name="password" placeholder="Password" class="input-box" required>
+
+    <button type="submit" class="register-btn">
+        Create Account
+    </button>
+
+</form>
+
+<!-- ✅ FIXED LINK -->
+<p style="margin-top:20px;">ython <app class="py"></app>
+Already have an account?
+<a href="/login">Login</a>
+</p>
+
+</div>
+
+</body>
+</html>
